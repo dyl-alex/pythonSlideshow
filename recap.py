@@ -1,6 +1,8 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 import itertools
+import time
+
 
 imageList = ["C:\\Users\\dyale\\OneDrive\\Documents\\Summer Projects\\Project1\\image1.png",
  "C:\\Users\\dyale\\OneDrive\\Documents\\Summer Projects\\Project1\\image2.png", 
@@ -15,9 +17,8 @@ imageList = itertools.cycle(imageList)
 master = tk.Tk()
 master.geometry("600x375")
 
+
 panel = tk.Label(master)
-
-
 
 def addImage(img):
     imageList.append(img)
@@ -33,16 +34,20 @@ def changeImageF():
     panel.img = img
     panel['image'] = img
 
+def slideshow():
+    time = 0
 
-back = tk.Button(master, text="Back", height = 20 , width=20)
-past = tk.Button(master, text="Next", height = 20 , width=20, command = changeImageF)
-back.grid(column=0, row=1)
-past.grid(column=2, row=1)
+past = tk.Button(master, text="Next", height = 2, width=20, command = changeImageF)
+slideshow = tk.Button(master, text="Slideshow", height=2, width = 20, command = slideshow)
+stop = tk.Button(master, text="Stop", height = 2, width = 20)
+past.grid(column=1, row=2)
+slideshow.grid(column = 2, row = 2)
+stop.grid(column = 3, row = 2)
 
 label = tk.Label(master, text="Python Slideshow")
-label.grid(column=1, row=0)
+label.grid(column=2, row=0)
 
-panel.grid(column=1,row = 1)
+panel.grid(column=2,row = 1)
 
 changeImageF()
 
